@@ -1,108 +1,156 @@
-/* 1. TYPOGRAPHY: Import 'Inter' Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* 1. TYPOGRAPHY & VARIABLES (From ICT MISR Source) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
-body, .theme-entry, .theme-entry *, .theme-entry .form, .theme-entry .view, input, textarea, a.button {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+:root {
+    --navy-900: #0B1E3D;
+    --navy-800: #122A50;
+    --blue-600: #2F5FDB;
+    --blue-100: #EAF0FE;
+    --slate-600: #4B5768;
+    --slate-400: #8593A8;
+    --slate-200: #E1E6EF;
+    --slate-100: #EEF1F6;
+    --bg: #F3F5FA;
+    --white: #FFFFFF;
+    --success: #1E9E6B;
+    --amber: #B9791A;
+    --danger: #D14B4B;
+    /* The exact shadow from the source code */
+    --shadow-card: 0 1px 2px rgba(11,30,61,0.04), 0 8px 24px -12px rgba(11,30,61,0.10);
 }
 
-/* 2. GLOBAL CANVAS: Background Image */
+body, .theme-entry, .theme-entry *, .theme-entry .form, input, textarea, a.button {
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    color: var(--slate-600) !important;
+}
+
+/* 2. GLOBAL CANVAS & BACKGROUND */
 body, .theme-entry .form {
-    background-color: #f3f4f6 !important;
-    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') !important;
+    background-color: var(--bg) !important;
+    /* Replace the URL below with your actual Background PNG link */
+    background-image: url('https://ibb.co/WWkQ7B7Z?q=80&w=2564&auto=format&fit=crop') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
 }
 
-/* 3. CARD-BASED VIEWS: Translucent Glassmorphism Cards */
+/* 3. CARD-BASED VIEWS */
 .theme-entry .view {
     background-color: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(8px) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
-    border: 1px solid rgba(229, 231, 235, 0.5) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--shadow-card) !important;
+    border: 1px solid var(--slate-200) !important;
     margin-top: 15px !important;
-    margin-bottom: 20px !important;
-    padding: 15px !important;
+    margin-bottom: 24px !important;
+    padding: 0px !important; /* Reset padding to allow edge-to-edge headers */
+    overflow: hidden !important;
 }
 
-/* 4. HEADERS: Targets both Item Panels and List Grids */
+/* Add inner padding to K2 body to match mockup spacing */
+.theme-entry .view > .panel-body, .theme-entry .view > .grid-body {
+    padding: 22px 24px 24px !important;
+}
+
+/* 4. HEADERS (Space Grotesk Font & Clean Border) */
 .theme-entry .panel-header, .theme-entry .grid-header {
     background-color: transparent !important;
-    color: #1f2937 !important;
-    border-bottom: 2px solid #2563eb !important;
+    color: var(--navy-900) !important;
+    border-bottom: 1px solid var(--slate-100) !important;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    padding: 10px 5px !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 18px 24px !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
 }
 
-/* 5. INPUTS & DROPDOWNS: Soft borders with blue focus glow */
+/* 5. INPUTS & DROPDOWNS */
 .theme-entry input[type="text"], .theme-entry textarea, .theme-entry .input-control.select-box {
-    border: 1px solid #d1d5db !important;
-    border-radius: 6px !important;
-    padding: 8px 12px !important;
-    background-color: #f9fafb !important;
-    transition: all 0.2s ease !important;
+    border: 1px solid var(--slate-200) !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    background-color: var(--white) !important;
+    color: var(--navy-900) !important;
+    font-size: 13.5px !important;
+    transition: border-color 0.15s, box-shadow 0.15s !important;
 }
 
+/* Focus glow from source code */
 .theme-entry input[type="text"]:focus, .theme-entry textarea:focus {
-    background-color: #ffffff !important;
-    border-color: #2563eb !important;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2) !important;
+    border-color: var(--blue-600) !important;
+    box-shadow: 0 0 0 3px var(--blue-100) !important;
     outline: none !important;
 }
 
-/* 6. GLOBAL BUTTON STYLING */
+/* Read-only styling from source code */
+.theme-entry input[readonly], .theme-entry textarea[readonly] {
+    background-color: var(--slate-100) !important;
+    border-color: var(--slate-100) !important;
+    color: var(--slate-600) !important;
+}
+
+/* 6. BUTTONS */
 .theme-entry a.button {
-    border-radius: 6px !important;
+    border-radius: 8px !important;
     font-weight: 600 !important;
     border: none !important;
-    padding: 8px 20px !important;
-    transition: background-color 0.2s ease !important;
-    color: white !important;
+    padding: 11px 20px !important;
+    transition: transform .1s, box-shadow .15s, background .15s !important;
+    color: var(--white) !important;
 }
 
-/* 7. PRECISE BUTTON COLOR MAPPING */
-/* Primary Actions (Blue) */
+/* Primary Actions */
 a.button[name="Button Submit"], 
 a.button[name="Button Finance Processing"] {
-    background-color: #2563eb !important;
+    background-color: var(--blue-600) !important;
+    box-shadow: 0 6px 16px -6px rgba(47,95,219,0.55) !important;
 }
 a.button[name="Button Submit"]:hover, 
-a.button[name="Button Finance Processing"]:hover { background-color: #1d4ed8 !important; }
+a.button[name="Button Finance Processing"]:hover { background-color: var(--navy-900) !important; }
 
-/* Success Actions (Green) */
-a.button[name="Approve Button"] {
-    background-color: #28a745 !important;
-}
-a.button[name="Approve Button"]:hover { background-color: #218838 !important; }
-
-/* Destructive Actions (Red) */
+/* Status Actions mapped to Source Variables */
+a.button[name="Approve Button"] { background-color: var(--success) !important; }
 a.button[name="Reject Button"], 
 a.button[name="Button Cancel"],
-a.button[name="Cancel Claim Button"] {
-    background-color: #dc3545 !important;
-}
-a.button[name="Reject Button"]:hover, 
-a.button[name="Button Cancel"]:hover,
-a.button[name="Cancel Claim Button"]:hover { background-color: #c82333 !important; }
-
-/* Warning/Rework Actions (Orange) */
+a.button[name="Cancel Claim Button"] { background-color: var(--danger) !important; }
 a.button[name="Rework Button"], 
-a.button[name="Resubmit Claim Button"] {
-    background-color: #fd7e14 !important;
+a.button[name="Resubmit Claim Button"] { background-color: var(--amber) !important; }
+
+/* 7. DYNAMIC DATA TARGETING (Logo & Reference) */
+/* Targets the specific Top Nav Logo Picture Control */
+img[name="Nav Logo"] {
+    height: 52px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    background: transparent !important;
 }
-a.button[name="Rework Button"]:hover, 
-a.button[name="Resubmit Claim Button"]:hover { background-color: #e8590c !important; }
+
+/* Targets the specific Reference Number text */
+span[name="Reference Number"] {
+    display: block !important;
+    text-align: right !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 16px !important;
+    color: var(--navy-800) !important;
+    font-weight: 600 !important;
+    margin-top: 2px !important;
+}
+
+span[name="Reference Label"] {
+    display: block !important;
+    text-align: right !important;
+    font-size: 12px !important;
+    color: var(--slate-400) !important;
+}
 
 /* 8. IMAGE & LAYOUT TWEAKS */
 img.picture-control-inline {
-    border-radius: 8px !important;
+    border-radius: 10px !important;
 }
 .theme-entry table.layout-table, .theme-entry table.grid-content-table {
     margin-top: 15px !important;
