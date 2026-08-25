@@ -128,7 +128,7 @@ body, .theme-entry .form {
     color: var(--white) !important;
 }
 a.button[name="Button Submit"], a.button[name="Button Finance Processing"] {
-    background-color: var(--blue-600) !important;
+    background-color: var(--white) !important;
     box-shadow: 0 6px 16px -6px rgba(47,95,219,0.55) !important;
 }
 a.button[name="Approve Button"] { background-color: var(--success) !important; }
