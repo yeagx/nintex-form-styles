@@ -28,7 +28,7 @@ body, .theme-entry, .theme-entry *, .theme-entry .form, input, textarea, a.butto
 body, .theme-entry .form {
     background-color: var(--bg) !important;
     /* Replace the URL below with your actual Background PNG link */
-    background-image: url('https://ibb.co/WWkQ7B7Z?q=80&w=2564&auto=format&fit=crop') !important;
+    background-image: url('https://ibb.co/WWkQ7B7Z') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
