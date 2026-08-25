@@ -1,1 +1,39 @@
+/* Global Canvas */
+body, .theme-entry .form {
+    background-color: #f3f4f6 !important;
+}
 
+/* Card-Based Views */
+.theme-entry .view {
+    background-color: #ffffff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* Clean Headers */
+.theme-entry .panel-header {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    border-bottom: 2px solid #2563eb !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px !important;
+}
+
+/* Inputs */
+.theme-entry input[type="text"], .theme-entry textarea {
+    border: 1px solid #d1d5db !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+    transition: border-color 0.2s !important;
+}
+.theme-entry input[type="text"]:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+}
