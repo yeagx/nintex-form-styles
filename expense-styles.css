@@ -1,4 +1,11 @@
-/* Global Canvas */
+/* 1. Import the 'Inter' Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* 2. Apply globally to all K2 Form elements */
+body, .theme-entry, .theme-entry *, .theme-entry .form, .theme-entry .view, input, textarea, a.button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
 body, .theme-entry .form {
     background-color: #f3f4f6 !important;
 }
