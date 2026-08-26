@@ -1,394 +1,209 @@
-/* ============================================================
-   ICT MISR — Expense Claim Form
-   Nintex Automation (K2) custom style profile
-   All selectors scoped under .theme-entry per K2 requirements
-   ============================================================ */
+body { outline: 4px solid magenta !important; }
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
-:root {
-  --navy-900:#0B1E3D;
-  --navy-800:#122A50;
-  --blue-600:#2F5FDB;
-  --blue-500:#3F72E8;
-  --blue-100:#EAF0FE;
-  --blue-50:#F4F7FE;
-  --slate-700:#33415A;
-  --slate-600:#4B5768;
-  --slate-400:#8593A8;
-  --slate-200:#E1E6EF;
-  --slate-100:#EEF1F6;
-  --bg:#F3F5FA;
-  --white:#FFFFFF;
-  --success:#1E9E6B;
-  --amber:#B9791A;
-  --danger:#D14B4B;
+:root{
+  --navy-900:#0B1E3D; --navy-800:#122A50;
+  --blue-600:#2F5FDB; --blue-500:#3F72E8; --blue-100:#EAF0FE; --blue-50:#F4F7FE;
+  --slate-600:#4B5768; --slate-400:#8593A8; --slate-200:#E1E6EF; --slate-100:#EEF1F6;
+  --bg:#F3F5FA; --white:#FFF;
+  --success:#1E9E6B; --amber:#B9791A; --danger:#D14B4B;
   --shadow-card:0 1px 2px rgba(11,30,61,.04), 0 8px 24px -12px rgba(11,30,61,.10);
 }
 
-/* ============================================================
-   1. TYPOGRAPHY
-   ============================================================ */
-.theme-entry,
-.theme-entry .form,
-.theme-entry span,
-.theme-entry div,
-.theme-entry td,
-.theme-entry a,
-.theme-entry input,
-.theme-entry textarea,
-.theme-entry select {
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important;
+/* ---------- FONTS ---------- */
+body, .form, .view, .panel, .grid, input, textarea, select, span, div, td, a{
+  font-family:'Inter',-apple-system,"Segoe UI",Roboto,sans-serif !important;
 }
-
-.theme-entry .panel-header-text span,
-.theme-entry .grid-header-text span {
+.panel-header-text span, .grid-header-text span{
   font-family:'Space Grotesk',sans-serif !important;
 }
 
-/* ============================================================
-   2. PAGE CANVAS
-   ============================================================ */
-body,
-.theme-entry .form {
-  background-color:var(--bg) !important;
-  background-size:cover !important;
-  background-position:center !important;
-  background-attachment:fixed !important;
-}
+/* ---------- PAGE ---------- */
+body, .form{ background-color:var(--bg) !important; }
 
-.theme-entry .form {
-  padding:12px 24px 80px !important;
-}
-
-/* ============================================================
-   3. VIEWS AS CARDS  (centered, respects your 60% width)
-   ============================================================ */
-.theme-entry .view {
-  background-color:var(--white) !important;
-  border:1px solid var(--slate-200) !important;
-  border-radius:10px !important;
-  box-shadow:var(--shadow-card) !important;
-  margin-top:0 !important;
-  margin-bottom:20px !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
+/* ---------- CENTER THE VIEWS (keeps your 60%) ---------- */
+.row{ text-align:center !important; }
+.row > .view{
+  display:inline-block !important;
   float:none !important;
-  padding:0 !important;
+  text-align:left !important;
+  margin:0 auto 20px auto !important;
+  vertical-align:top !important;
+}
+
+/* ---------- THE ACTUAL CARD (.panel / .grid, NOT .view) ---------- */
+.view .panel, .view .grid{
+  background:var(--white) !important;
+  border:1px solid var(--slate-200) !important;
+  border-radius:12px !important;
+  box-shadow:var(--shadow-card) !important;
   overflow:hidden !important;
 }
-
-.theme-entry .view .innerpanel {
-  margin:0 !important;
+/* kill K2's added summary borders */
+.gridSummaryNeedLeftBorder, .gridSummaryNeedRightBorder,
+.gridSummaryNeedTopBorder, .gridSummaryNeedBottomBorder{
+  border:1px solid var(--slate-200) !important;
 }
 
-/* card headers */
-.theme-entry .panel-header,
-.theme-entry .grid-header {
+/* ---------- CARD HEADER ---------- */
+.panel-header, .grid-header{
   background:transparent !important;
+  background-color:transparent !important;
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
   padding:16px 24px !important;
 }
-
-.theme-entry .panel-header-text span,
-.theme-entry .grid-header-text span {
+.panel-header-l,.panel-header-r,.panel-header-c{ background:none !important; border:none !important; }
+.panel-header-text span, .grid-header-text span{
   color:var(--navy-900) !important;
-  font-size:15.5px !important;
-  font-weight:600 !important;
+  font-size:15.5px !important; font-weight:600 !important;
 }
+/* hide the collapse chevron (not in the mock) */
+a.collapse-vertical{ display:none !important; }
 
-.theme-entry .panel-body-wrapper {
+/* ---------- BODY PADDING (override inline 30px) ---------- */
+.panel-body.STYLE-VIEW-padding, .grid-body.STYLE-VIEW-padding{
   padding:22px 24px 24px !important;
 }
-
-/* ============================================================
-   4. HEADER VIEW — FIELD GRID
-   ============================================================ */
-.theme-entry .root-table.Grid-Layout {
-  width:100% !important;
-  gap:18px 20px !important;
-}
-
-.theme-entry .SourceCode-Forms-Controls-Web-Label {
-  font-size:12px !important;
-  font-weight:600 !important;
-  color:var(--slate-600) !important;
-  letter-spacing:.01em !important;
-  line-height:1.4 !important;
-}
-
-.theme-entry .SourceCode-Forms-Controls-Web-DataLabel {
-  font-size:13.5px !important;
-  color:var(--navy-900) !important;
-  line-height:1.5 !important;
-}
-
-.theme-entry .line-break.clearFloatFix {
+.panel-body-t,.panel-body-b,.panel-body-t-l,.panel-body-t-c,.panel-body-t-r,
+.panel-body-b-l,.panel-body-b-c,.panel-body-b-r,
+.panel-body-m-l,.panel-body-m-r{
   display:none !important;
 }
 
-/* money in mono */
-.theme-entry [name="Total Amount Data Label"] {
-  font-family:'IBM Plex Mono',monospace !important;
-  font-weight:600 !important;
-  font-size:15px !important;
-  color:var(--navy-800) !important;
+/* ---------- HEADER FIELD GRID ---------- */
+.root-table.Grid-Layout{ width:100% !important; gap:16px 24px !important; }
+.line-break.clearFloatFix{ display:none !important; }
+
+span.SourceCode-Forms-Controls-Web-Label{
+  font-size:12px !important; font-weight:600 !important;
+  color:var(--slate-600) !important; line-height:1.4 !important;
+}
+span.SourceCode-Forms-Controls-Web-DataLabel{
+  font-size:13.5px !important; color:var(--navy-900) !important;
 }
 
-/* ============================================================
-   5. INPUTS
-   ============================================================ */
-.theme-entry input[type="text"],
-.theme-entry textarea,
-.theme-entry .input-control.text-input,
-.theme-entry .input-control.select-box {
+/* ---------- INPUTS: kill the 9-slice border pieces ---------- */
+.input-control-t, .input-control-b,
+.input-control-t-l,.input-control-t-c,.input-control-t-r,
+.input-control-b-l,.input-control-b-c,.input-control-b-r,
+.input-control-m-l,.input-control-m-r{
+  display:none !important;
+}
+
+input.SourceCode-Forms-Controls-Web-TextBox,
+.input-control.text-input,
+.input-control.select-box,
+.input-control.dropdown-box,
+.input-control.calendar-control{
   border:1px solid var(--slate-200) !important;
   border-radius:8px !important;
-  background-color:var(--white) !important;
+  background:var(--white) !important;
+  box-shadow:none !important;
   color:var(--navy-900) !important;
   font-size:13.5px !important;
-  box-shadow:none !important;
+  box-sizing:border-box !important;
 }
-
-.theme-entry input[type="text"] {
+input.SourceCode-Forms-Controls-Web-TextBox{ padding:10px 12px !important; }
+.input-control.text-input textarea{
+  border:none !important; background:transparent !important;
+  padding:10px 12px !important; min-height:64px !important;
+  resize:vertical !important; width:100% !important; box-sizing:border-box !important;
+}
+.input-control.text-input .input-control-wrapper > input,
+.input-control.select-box .input-control-wrapper > a{
+  border:none !important; background:transparent !important;
   padding:10px 12px !important;
 }
+.input-control-watermark{ color:var(--slate-400) !important; padding-left:12px !important; }
 
-.theme-entry textarea {
-  padding:10px 12px !important;
-  min-height:64px !important;
-  resize:vertical !important;
-}
-
-/* strip inner borders so the outer wrapper is the only visible box */
-.theme-entry .input-control.text-input input,
-.theme-entry .input-control.text-input textarea {
-  border:none !important;
-  background:transparent !important;
-}
-
-.theme-entry input[type="text"]:focus,
-.theme-entry textarea:focus {
+input:focus, textarea:focus{
   border-color:var(--blue-500) !important;
   box-shadow:0 0 0 3px var(--blue-100) !important;
   outline:none !important;
 }
 
-.theme-entry input[readonly],
-.theme-entry textarea[readonly],
-.theme-entry .input-control.read-only,
-.theme-entry .DataLabel.readonly,
-.theme-entry .SourceCode-Forms-Controls-Web-DataLabel.readonly {
-  background-color:var(--slate-100) !important;
+/* read-only */
+.input-control.read-only,
+.ui-lookupbox-disabled,
+input[readonly], textarea[readonly],
+.SourceCode-Forms-Controls-Web-DataLabel.readonly{
+  background:var(--slate-100) !important;
   border-color:var(--slate-100) !important;
   color:var(--slate-600) !important;
-  cursor:not-allowed !important;
 }
 
-.theme-entry .input-control-watermark {
-  color:var(--slate-400) !important;
+/* ---------- LINE ITEMS GRID ---------- */
+.grid-toolbars{ padding:14px 24px 0 !important; border:none !important; }
+a.toolbar-button .button-text{
+  color:var(--blue-600) !important; font-weight:600 !important; font-size:13px !important;
 }
-
-/* dropdown caret icons */
-.theme-entry .svg-icon-dropdown-expand {
-  fill:var(--slate-400) !important;
-}
-
-/* ============================================================
-   6. LINE ITEMS GRID
-   ============================================================ */
-.theme-entry .grid-toolbars {
-  padding:14px 24px 4px !important;
-}
-
-.theme-entry a.toolbar-button .button-text {
-  color:var(--blue-600) !important;
-  font-weight:600 !important;
-  font-size:13px !important;
-}
-
-.theme-entry .grid-body {
-  padding:8px 24px 20px !important;
-}
-
-.theme-entry .grid-body-content-wrapper,
-.theme-entry .grid-column-headers {
-  border:none !important;
-}
-
-.theme-entry .grid-column-header-table {
-  background-color:var(--slate-100) !important;
+.grid-column-headers, .grid-body-content-wrapper{ border:none !important; }
+.grid-column-header-table{
+  background:var(--slate-100) !important;
   border-bottom:1px solid var(--slate-200) !important;
 }
-
-.theme-entry .grid-column-header-text {
-  color:var(--slate-400) !important;
-  font-size:10.5px !important;
-  font-weight:700 !important;
-  text-transform:uppercase !important;
-  letter-spacing:.06em !important;
-  padding:11px 12px !important;
+.grid-column-header-text{
+  color:var(--slate-400) !important; font-size:10.5px !important;
+  font-weight:700 !important; text-transform:uppercase !important;
+  letter-spacing:.06em !important; padding:11px 12px !important;
 }
-
-.theme-entry .grid-column-header-divider,
-.theme-entry .grid-content-cell-divider {
-  display:none !important;
-}
-
-.theme-entry .grid-content-cell {
+.grid-column-header-divider{ display:none !important; }
+.grid-content-cell{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
-  padding:9px 10px !important;
-  vertical-align:middle !important;
+  padding:9px 10px !important; vertical-align:middle !important;
 }
-
-.theme-entry a.action-row {
-  color:var(--blue-600) !important;
-  font-weight:600 !important;
-  font-size:13px !important;
+.zebra-stripes tr:nth-child(even) td{ background:transparent !important; }
+a.action-row{ color:var(--blue-600) !important; font-weight:600 !important; font-size:13px !important; }
+.grid-summary-row td{ border-top:1px solid var(--slate-100) !important; padding-top:14px !important; }
+span[name="Sum Label"]{
+  font-size:11px !important; color:var(--slate-400) !important;
+  text-transform:uppercase !important; letter-spacing:.06em !important;
 }
-
-/* Sum / totals row */
-.theme-entry .grid-summary-row td {
-  border-top:1px solid var(--slate-100) !important;
-  padding-top:14px !important;
-}
-
-.theme-entry [name="Sum Label"] {
-  font-size:12px !important;
-  font-weight:600 !important;
-  color:var(--slate-400) !important;
-  text-transform:uppercase !important;
-  letter-spacing:.06em !important;
-}
-
-.theme-entry [name="Sum USD Amount"] {
+span[name="Sum USD Amount"]{
   font-family:'IBM Plex Mono',monospace !important;
-  font-size:20px !important;
-  font-weight:600 !important;
-  color:var(--navy-900) !important;
+  font-size:20px !important; color:var(--navy-900) !important;
+}
+span[name="Amount Data Label"], span[name="USD Amount Data Label"],
+span[name="Total Amount Data Label"]{
+  font-family:'IBM Plex Mono',monospace !important; color:var(--navy-800) !important;
+}
+.file-wrapper .file-watermark{
+  color:var(--blue-600) !important; background:var(--blue-50) !important;
+  border:1px dashed var(--blue-500) !important; border-radius:999px !important;
+  padding:6px 10px !important; font-size:11.5px !important; display:inline-block !important;
 }
 
-/* per-row money cells */
-.theme-entry [name="Amount Data Label"],
-.theme-entry [name="USD Amount Data Label"] {
-  font-family:'IBM Plex Mono',monospace !important;
-  color:var(--navy-800) !important;
+/* ---------- BUTTONS ---------- */
+a.SourceCode-Forms-Controls-Web-Button{
+  border:none !important; border-radius:8px !important;
+  padding:11px 22px !important; font-size:13.5px !important;
+  font-weight:600 !important; text-decoration:none !important;
+  display:inline-block !important; color:#FFFFFF !important;
 }
+a.SourceCode-Forms-Controls-Web-Button span{ color:#FFFFFF !important; }
 
-/* receipt attach → chip */
-.theme-entry .file-wrapper .file-watermark {
-  color:var(--blue-600) !important;
-  background:var(--blue-50) !important;
-  border:1px dashed var(--blue-500) !important;
-  border-radius:999px !important;
-  padding:6px 10px !important;
-  font-size:11.5px !important;
-  display:inline-block !important;
-}
-
-/* ============================================================
-   7. BUTTONS
-   NOTE: K2 renders buttons with class
-   "SFC SourceCode-Forms-Controls-Web-Button" — NOT ".button"
-   ============================================================ */
-.theme-entry a.SourceCode-Forms-Controls-Web-Button {
-  border:none !important;
-  border-radius:8px !important;
-  padding:11px 22px !important;
-  font-size:13.5px !important;
-  font-weight:600 !important;
-  color:#FFFFFF !important;
-  text-decoration:none !important;
-  display:inline-block !important;
-  transition:background-color .15s ease !important;
-}
-
-.theme-entry a.SourceCode-Forms-Controls-Web-Button span,
-.theme-entry a.SourceCode-Forms-Controls-Web-Button .button-text {
-  color:#FFFFFF !important;
-}
-
-/* primary — blue */
-.theme-entry a[name="Button Submit"],
-.theme-entry a[name="Button Finance Processing"] {
+a[name="Button Submit"], a[name="Button Finance Processing"]{
   background-color:var(--blue-600) !important;
   box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
 }
-.theme-entry a[name="Button Submit"]:hover,
-.theme-entry a[name="Button Finance Processing"]:hover {
+a[name="Button Submit"]:hover, a[name="Button Finance Processing"]:hover{
   background-color:var(--navy-900) !important;
 }
-
-/* success — green */
-.theme-entry a[name="Approve Button"] {
-  background-color:var(--success) !important;
-}
-.theme-entry a[name="Approve Button"]:hover {
-  background-color:#177A52 !important;
-}
-
-/* destructive — red */
-.theme-entry a[name="Reject Button"],
-.theme-entry a[name="Button Cancel"],
-.theme-entry a[name="Cancel Claim Button"] {
+a[name="Approve Button"]{ background-color:var(--success) !important; }
+a[name="Approve Button"]:hover{ background-color:#177A52 !important; }
+a[name="Reject Button"], a[name="Button Cancel"], a[name="Cancel Claim Button"]{
   background-color:var(--danger) !important;
 }
-.theme-entry a[name="Reject Button"]:hover,
-.theme-entry a[name="Button Cancel"]:hover,
-.theme-entry a[name="Cancel Claim Button"]:hover {
+a[name="Reject Button"]:hover, a[name="Button Cancel"]:hover, a[name="Cancel Claim Button"]:hover{
   background-color:#B03A3A !important;
 }
+a[name="Rework Button"], a[name="Resubmit Claim Button"]{ background-color:var(--amber) !important; }
+a[name="Rework Button"]:hover, a[name="Resubmit Claim Button"]:hover{ background-color:#96610F !important; }
 
-/* warning / rework — amber */
-.theme-entry a[name="Rework Button"],
-.theme-entry a[name="Resubmit Claim Button"] {
-  background-color:var(--amber) !important;
-}
-.theme-entry a[name="Rework Button"]:hover,
-.theme-entry a[name="Resubmit Claim Button"]:hover {
-  background-color:#96610F !important;
-}
-
-/* ============================================================
-   8. BANNER IMAGES
-   ============================================================ */
-.theme-entry img.picture-control-inline {
-  border-radius:10px !important;
-  display:block !important;
-  margin:0 auto !important;
-  object-fit:contain !important;
-}
-
-/* ============================================================
-   9. REFERENCE NUMBER
-   ============================================================ */
-.theme-entry [name="Reference Label"] {
-  display:block !important;
-  text-align:right !important;
-  font-size:12px !important;
-  color:var(--slate-400) !important;
-}
-
-.theme-entry [name="Reference Number"] {
-  display:block !important;
-  text-align:right !important;
-  font-family:'IBM Plex Mono',monospace !important;
-  font-size:14px !important;
-  font-weight:600 !important;
-  color:var(--navy-800) !important;
-  margin-top:2px !important;
-}
-
-/* ============================================================
-   10. FOOTER NOTE
-   ============================================================ */
-.theme-entry [name*="Footer"],
-.theme-entry [name*="footer"] {
-  display:block !important;
-  text-align:center !important;
-  font-size:11.5px !important;
-  color:var(--slate-400) !important;
-  margin-top:36px !important;
-}
+/* ---------- IMAGES / REFERENCE ---------- */
+img.picture-control-inline{ border-radius:12px !important; display:block !important; margin:0 auto !important; }
+span[name="Reference Label"]{ display:block !important; text-align:right !important; font-size:12px !important; color:var(--slate-400) !important; }
+span[name="Reference Number"]{ display:block !important; text-align:right !important; font-family:'IBM Plex Mono',monospace !important; font-size:14px !important; font-weight:600 !important; color:var(--navy-800) !important; }
