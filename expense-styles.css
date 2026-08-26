@@ -1,152 +1,394 @@
+/* ============================================================
+   ICT MISR — Expense Claim Form
+   Nintex Automation (K2) custom style profile
+   All selectors scoped under .theme-entry per K2 requirements
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 :root {
-    --navy-900: #0B1E3D;
-    --navy-800: #122A50;
-    --blue-600: #2F5FDB;
-    --blue-100: #EAF0FE;
-    --slate-600: #4B5768;
-    --slate-400: #8593A8;
-    --slate-200: #E1E6EF;
-    --slate-100: #EEF1F6;
-    --bg: #F3F5FA;
-    --white: #FFFFFF;
-    --success: #1E9E6B;
-    --amber: #B9791A;
-    --danger: #D14B4B;
-    --shadow-card: 0 1px 2px rgba(11,30,61,0.04), 0 8px 24px -12px rgba(11,30,61,0.10);
+  --navy-900:#0B1E3D;
+  --navy-800:#122A50;
+  --blue-600:#2F5FDB;
+  --blue-500:#3F72E8;
+  --blue-100:#EAF0FE;
+  --blue-50:#F4F7FE;
+  --slate-700:#33415A;
+  --slate-600:#4B5768;
+  --slate-400:#8593A8;
+  --slate-200:#E1E6EF;
+  --slate-100:#EEF1F6;
+  --bg:#F3F5FA;
+  --white:#FFFFFF;
+  --success:#1E9E6B;
+  --amber:#B9791A;
+  --danger:#D14B4B;
+  --shadow-card:0 1px 2px rgba(11,30,61,.04), 0 8px 24px -12px rgba(11,30,61,.10);
 }
 
-body, .theme-entry, .theme-entry *, .theme-entry .form, input, textarea, a.button {
-    font-family: 'Inter', -apple-system, sans-serif !important;
-    color: var(--slate-600) !important;
+/* ============================================================
+   1. TYPOGRAPHY
+   ============================================================ */
+.theme-entry,
+.theme-entry .form,
+.theme-entry span,
+.theme-entry div,
+.theme-entry td,
+.theme-entry a,
+.theme-entry input,
+.theme-entry textarea,
+.theme-entry select {
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important;
 }
 
-/* GLOBAL CANVAS */
-body, .theme-entry .form {
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
+.theme-entry .panel-header-text span,
+.theme-entry .grid-header-text span {
+  font-family:'Space Grotesk',sans-serif !important;
 }
 
-/* CARDS (Panels & Views) */
+/* ============================================================
+   2. PAGE CANVAS
+   ============================================================ */
+body,
+.theme-entry .form {
+  background-color:var(--bg) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-attachment:fixed !important;
+}
+
+.theme-entry .form {
+  padding:12px 24px 80px !important;
+}
+
+/* ============================================================
+   3. VIEWS AS CARDS  (centered, respects your 60% width)
+   ============================================================ */
 .theme-entry .view {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(8px) !important;
-    border-radius: 10px !important;
-    box-shadow: var(--shadow-card) !important;
-    border: 1px solid var(--slate-200) !important;
-    margin-top: 15px !important;
-    margin-bottom: 24px !important;
-    padding: 0px !important; 
-}
-.theme-entry .view > .panel-body, .theme-entry .view > .grid-body {
-    padding: 22px 24px 24px !important;
-}
-
-/* CARD HEADERS */
-.theme-entry .panel-header, .theme-entry .grid-header {
-    background-color: transparent !important;
-    color: var(--navy-900) !important;
-    border-bottom: 1px solid var(--slate-100) !important;
-    border-top: none !important;
-    border-left: none !important;
-    border-right: none !important;
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    padding: 18px 24px !important;
+  background-color:var(--white) !important;
+  border:1px solid var(--slate-200) !important;
+  border-radius:10px !important;
+  box-shadow:var(--shadow-card) !important;
+  margin-top:0 !important;
+  margin-bottom:20px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  float:none !important;
+  padding:0 !important;
+  overflow:hidden !important;
 }
 
-/* Table Wrapper */
-.theme-entry .grid-body-content-wrapper {
-    border: 1px solid var(--slate-200) !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
+.theme-entry .view .innerpanel {
+  margin:0 !important;
 }
-/* Table Column Headers */
+
+/* card headers */
+.theme-entry .panel-header,
+.theme-entry .grid-header {
+  background:transparent !important;
+  border:none !important;
+  border-bottom:1px solid var(--slate-100) !important;
+  padding:16px 24px !important;
+}
+
+.theme-entry .panel-header-text span,
+.theme-entry .grid-header-text span {
+  color:var(--navy-900) !important;
+  font-size:15.5px !important;
+  font-weight:600 !important;
+}
+
+.theme-entry .panel-body-wrapper {
+  padding:22px 24px 24px !important;
+}
+
+/* ============================================================
+   4. HEADER VIEW — FIELD GRID
+   ============================================================ */
+.theme-entry .root-table.Grid-Layout {
+  width:100% !important;
+  gap:18px 20px !important;
+}
+
+.theme-entry .SourceCode-Forms-Controls-Web-Label {
+  font-size:12px !important;
+  font-weight:600 !important;
+  color:var(--slate-600) !important;
+  letter-spacing:.01em !important;
+  line-height:1.4 !important;
+}
+
+.theme-entry .SourceCode-Forms-Controls-Web-DataLabel {
+  font-size:13.5px !important;
+  color:var(--navy-900) !important;
+  line-height:1.5 !important;
+}
+
+.theme-entry .line-break.clearFloatFix {
+  display:none !important;
+}
+
+/* money in mono */
+.theme-entry [name="Total Amount Data Label"] {
+  font-family:'IBM Plex Mono',monospace !important;
+  font-weight:600 !important;
+  font-size:15px !important;
+  color:var(--navy-800) !important;
+}
+
+/* ============================================================
+   5. INPUTS
+   ============================================================ */
+.theme-entry input[type="text"],
+.theme-entry textarea,
+.theme-entry .input-control.text-input,
+.theme-entry .input-control.select-box {
+  border:1px solid var(--slate-200) !important;
+  border-radius:8px !important;
+  background-color:var(--white) !important;
+  color:var(--navy-900) !important;
+  font-size:13.5px !important;
+  box-shadow:none !important;
+}
+
+.theme-entry input[type="text"] {
+  padding:10px 12px !important;
+}
+
+.theme-entry textarea {
+  padding:10px 12px !important;
+  min-height:64px !important;
+  resize:vertical !important;
+}
+
+/* strip inner borders so the outer wrapper is the only visible box */
+.theme-entry .input-control.text-input input,
+.theme-entry .input-control.text-input textarea {
+  border:none !important;
+  background:transparent !important;
+}
+
+.theme-entry input[type="text"]:focus,
+.theme-entry textarea:focus {
+  border-color:var(--blue-500) !important;
+  box-shadow:0 0 0 3px var(--blue-100) !important;
+  outline:none !important;
+}
+
+.theme-entry input[readonly],
+.theme-entry textarea[readonly],
+.theme-entry .input-control.read-only,
+.theme-entry .DataLabel.readonly,
+.theme-entry .SourceCode-Forms-Controls-Web-DataLabel.readonly {
+  background-color:var(--slate-100) !important;
+  border-color:var(--slate-100) !important;
+  color:var(--slate-600) !important;
+  cursor:not-allowed !important;
+}
+
+.theme-entry .input-control-watermark {
+  color:var(--slate-400) !important;
+}
+
+/* dropdown caret icons */
+.theme-entry .svg-icon-dropdown-expand {
+  fill:var(--slate-400) !important;
+}
+
+/* ============================================================
+   6. LINE ITEMS GRID
+   ============================================================ */
+.theme-entry .grid-toolbars {
+  padding:14px 24px 4px !important;
+}
+
+.theme-entry a.toolbar-button .button-text {
+  color:var(--blue-600) !important;
+  font-weight:600 !important;
+  font-size:13px !important;
+}
+
+.theme-entry .grid-body {
+  padding:8px 24px 20px !important;
+}
+
+.theme-entry .grid-body-content-wrapper,
+.theme-entry .grid-column-headers {
+  border:none !important;
+}
+
 .theme-entry .grid-column-header-table {
-    background-color: var(--slate-100) !important;
-    border-bottom: 1px solid var(--slate-200) !important;
+  background-color:var(--slate-100) !important;
+  border-bottom:1px solid var(--slate-200) !important;
 }
+
 .theme-entry .grid-column-header-text {
-    color: var(--slate-400) !important;
-    font-size: 10.5px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    padding: 11px 12px !important;
+  color:var(--slate-400) !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
+  padding:11px 12px !important;
 }
-/* Kill default K2 vertical lines */
-.theme-entry .grid-column-header-divider, .theme-entry .grid-content-cell-divider {
-    display: none !important;
+
+.theme-entry .grid-column-header-divider,
+.theme-entry .grid-content-cell-divider {
+  display:none !important;
 }
-/* Table Rows */
+
 .theme-entry .grid-content-cell {
-    border-bottom: 1px solid var(--slate-100) !important;
-    border-right: none !important;
-    border-left: none !important;
-    border-top: none !important;
-    padding: 9px 10px !important;
-    vertical-align: middle !important;
+  border:none !important;
+  border-bottom:1px solid var(--slate-100) !important;
+  padding:9px 10px !important;
+  vertical-align:middle !important;
 }
-/* "Add New Row" Link */
+
 .theme-entry a.action-row {
-    color: var(--blue-600) !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    padding: 14px 4px 4px !important;
+  color:var(--blue-600) !important;
+  font-weight:600 !important;
+  font-size:13px !important;
 }
 
-/* INPUTS & DROPDOWNS */
-.theme-entry input[type="text"], .theme-entry input[type="number"], .theme-entry textarea, .theme-entry .input-control.select-box {
-    border: 1px solid var(--slate-200) !important;
-    border-radius: 8px !important;
-    padding: 10px 12px !important;
-    background-color: var(--white) !important;
-    color: var(--navy-900) !important;
-    font-size: 13.5px !important;
-    transition: border-color 0.15s, box-shadow 0.15s !important;
-}
-.theme-entry input:focus, .theme-entry textarea:focus {
-    border-color: var(--blue-500) !important;
-    box-shadow: 0 0 0 3px var(--blue-100) !important;
-    outline: none !important;
-}
-.theme-entry input[readonly], .theme-entry textarea[readonly] {
-    background-color: var(--slate-100) !important;
-    border-color: var(--slate-100) !important;
-    color: var(--slate-600) !important;
+/* Sum / totals row */
+.theme-entry .grid-summary-row td {
+  border-top:1px solid var(--slate-100) !important;
+  padding-top:14px !important;
 }
 
-/* BUTTONS */
-.theme-entry a.button {
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    border: none !important;
-    padding: 11px 20px !important;
-    color: var(--white) !important;
+.theme-entry [name="Sum Label"] {
+  font-size:12px !important;
+  font-weight:600 !important;
+  color:var(--slate-400) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
 }
-a.button[name="Button Submit"], a.button[name="Button Finance Processing"] {
-    background-color: var(--white) !important;
-    box-shadow: 0 6px 16px -6px rgba(47,95,219,0.55) !important;
-}
-a.button[name="Approve Button"] { background-color: var(--success) !important; }
-a.button[name="Reject Button"], a.button[name="Button Cancel"], a.button[name="Cancel Claim Button"] { background-color: var(--danger) !important; }
-a.button[name="Rework Button"], a.button[name="Resubmit Claim Button"] { background-color: var(--amber) !important; }
 
-/* REFERENCE NUMBER */
-span[name="Reference Number"] {
-    display: block !important;
-    text-align: right !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-    font-size: 14px !important;
-    color: var(--navy-800) !important;
-    font-weight: 600 !important;
+.theme-entry [name="Sum USD Amount"] {
+  font-family:'IBM Plex Mono',monospace !important;
+  font-size:20px !important;
+  font-weight:600 !important;
+  color:var(--navy-900) !important;
 }
-span[name="Reference Label"] {
-    display: block !important;
-    text-align: right !important;
-    font-size: 12px !important;
-    color: var(--slate-400) !important;
+
+/* per-row money cells */
+.theme-entry [name="Amount Data Label"],
+.theme-entry [name="USD Amount Data Label"] {
+  font-family:'IBM Plex Mono',monospace !important;
+  color:var(--navy-800) !important;
+}
+
+/* receipt attach → chip */
+.theme-entry .file-wrapper .file-watermark {
+  color:var(--blue-600) !important;
+  background:var(--blue-50) !important;
+  border:1px dashed var(--blue-500) !important;
+  border-radius:999px !important;
+  padding:6px 10px !important;
+  font-size:11.5px !important;
+  display:inline-block !important;
+}
+
+/* ============================================================
+   7. BUTTONS
+   NOTE: K2 renders buttons with class
+   "SFC SourceCode-Forms-Controls-Web-Button" — NOT ".button"
+   ============================================================ */
+.theme-entry a.SourceCode-Forms-Controls-Web-Button {
+  border:none !important;
+  border-radius:8px !important;
+  padding:11px 22px !important;
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  color:#FFFFFF !important;
+  text-decoration:none !important;
+  display:inline-block !important;
+  transition:background-color .15s ease !important;
+}
+
+.theme-entry a.SourceCode-Forms-Controls-Web-Button span,
+.theme-entry a.SourceCode-Forms-Controls-Web-Button .button-text {
+  color:#FFFFFF !important;
+}
+
+/* primary — blue */
+.theme-entry a[name="Button Submit"],
+.theme-entry a[name="Button Finance Processing"] {
+  background-color:var(--blue-600) !important;
+  box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
+}
+.theme-entry a[name="Button Submit"]:hover,
+.theme-entry a[name="Button Finance Processing"]:hover {
+  background-color:var(--navy-900) !important;
+}
+
+/* success — green */
+.theme-entry a[name="Approve Button"] {
+  background-color:var(--success) !important;
+}
+.theme-entry a[name="Approve Button"]:hover {
+  background-color:#177A52 !important;
+}
+
+/* destructive — red */
+.theme-entry a[name="Reject Button"],
+.theme-entry a[name="Button Cancel"],
+.theme-entry a[name="Cancel Claim Button"] {
+  background-color:var(--danger) !important;
+}
+.theme-entry a[name="Reject Button"]:hover,
+.theme-entry a[name="Button Cancel"]:hover,
+.theme-entry a[name="Cancel Claim Button"]:hover {
+  background-color:#B03A3A !important;
+}
+
+/* warning / rework — amber */
+.theme-entry a[name="Rework Button"],
+.theme-entry a[name="Resubmit Claim Button"] {
+  background-color:var(--amber) !important;
+}
+.theme-entry a[name="Rework Button"]:hover,
+.theme-entry a[name="Resubmit Claim Button"]:hover {
+  background-color:#96610F !important;
+}
+
+/* ============================================================
+   8. BANNER IMAGES
+   ============================================================ */
+.theme-entry img.picture-control-inline {
+  border-radius:10px !important;
+  display:block !important;
+  margin:0 auto !important;
+  object-fit:contain !important;
+}
+
+/* ============================================================
+   9. REFERENCE NUMBER
+   ============================================================ */
+.theme-entry [name="Reference Label"] {
+  display:block !important;
+  text-align:right !important;
+  font-size:12px !important;
+  color:var(--slate-400) !important;
+}
+
+.theme-entry [name="Reference Number"] {
+  display:block !important;
+  text-align:right !important;
+  font-family:'IBM Plex Mono',monospace !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  color:var(--navy-800) !important;
+  margin-top:2px !important;
+}
+
+/* ============================================================
+   10. FOOTER NOTE
+   ============================================================ */
+.theme-entry [name*="Footer"],
+.theme-entry [name*="footer"] {
+  display:block !important;
+  text-align:center !important;
+  font-size:11.5px !important;
+  color:var(--slate-400) !important;
+  margin-top:36px !important;
 }
