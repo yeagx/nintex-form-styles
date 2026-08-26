@@ -285,7 +285,6 @@ body{
   padding:9px 10px !important;
   vertical-align:middle !important;
   overflow:hidden !important;
-  max-width:0 !important;
 }
 .form .zebra-stripes tr:nth-child(even) td{
   background:transparent !important;
