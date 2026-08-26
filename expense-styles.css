@@ -61,18 +61,17 @@ body{
 
 /* ============================================================
    3. COLLAPSE HIDDEN ROWS
-   K2 hides banner images with inline display:none on the <img>,
-   but the wrapper table / formcontrol / row still reserve height.
-   These rules only react to what K2 already hid — no logic changes.
+   Direct-child chains only — a row is collapsed only when its
+   own content is hidden, never because some nested descendant
+   happens to carry display:none. Reacts to what K2 already did;
+   the state rules are untouched.
    ============================================================ */
-.form .row:has(img.picture-control-inline[style*="display:none"]),
-.form .row:has(img.picture-control-inline[style*="display: none"]),
-.form .row:has(> .formcontrol [style*="display:none"]),
-.form .row:has(> .formcontrol [style*="display: none"]),
-.form .row:has(> .formcontrol [style*="visibility:hidden"]),
-.form .row:has(> .formcontrol [style*="visibility: hidden"]),
+.form .row[style*="display: none"],
 .form .row[style*="display:none"],
-.form .row[style*="display: none"]{
+.form .row:has(> .view[style*="display: none"]),
+.form .row:has(> .view[style*="display:none"]),
+.form .row:has(> .formcontrol > .innerpanel > .Grid-Layout[style*="display: none"]),
+.form .row:has(> .formcontrol > .innerpanel > .Grid-Layout[style*="display:none"]){
   display:none !important;
   height:0 !important;
   margin:0 !important;
@@ -413,6 +412,10 @@ body{
 .form a.SourceCode-Forms-Controls-Web-Button span{
   color:#FFFFFF !important;
 }
+/* never un-hide a button K2 has hidden */
+.form a.SourceCode-Forms-Controls-Web-Button.hidden{
+  display:none !important;
+}
 
 .form a[name="Button Submit"],
 .form a[name="Button Finance Processing"]{
@@ -454,7 +457,8 @@ body{
 /* ============================================================
    12. TOP BAR (logo + reference) + BANNER IMAGES
    ============================================================ */
-.form img.picture-control-inline{
+/* only style visible pictures — never override K2's display:none */
+.form img.picture-control-inline:not([style*="display:none"]):not([style*="display: none"]){
   border-radius:12px !important;
   display:block !important;
   margin:0 auto !important;
