@@ -201,8 +201,8 @@ a.toolbar-button .button-text{
 
 /* no horizontal scroll */
 .grid-body-content, .grid-body-content-wrapper, .scroll-wrapper{
-  overflow-x:visible !important;
-  overflow:visible !important;
+  overflow-x:hidden !important;
+  overflow-y:visible !important;
 }
 .scroll-wrapper > table.grid-content-table,
 table.grid-column-header-table,
