@@ -1,28 +1,49 @@
-body { outline: 4px solid magenta !important; }
+/* ============================================================
+   ICT MISR — Expense Claim Form
+   Nintex Automation (K2) custom style profile
+   ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 :root{
-  --navy-900:#0B1E3D; --navy-800:#122A50;
-  --blue-600:#2F5FDB; --blue-500:#3F72E8; --blue-100:#EAF0FE; --blue-50:#F4F7FE;
-  --slate-600:#4B5768; --slate-400:#8593A8; --slate-200:#E1E6EF; --slate-100:#EEF1F6;
-  --bg:#F3F5FA; --white:#FFF;
-  --success:#1E9E6B; --amber:#B9791A; --danger:#D14B4B;
+  --navy-900:#0B1E3D;
+  --navy-800:#122A50;
+  --blue-600:#2F5FDB;
+  --blue-500:#3F72E8;
+  --blue-100:#EAF0FE;
+  --blue-50:#F4F7FE;
+  --slate-600:#4B5768;
+  --slate-400:#8593A8;
+  --slate-200:#E1E6EF;
+  --slate-100:#EEF1F6;
+  --white:#FFFFFF;
+  --success:#1E9E6B;
+  --amber:#B9791A;
+  --danger:#D14B4B;
   --shadow-card:0 1px 2px rgba(11,30,61,.04), 0 8px 24px -12px rgba(11,30,61,.10);
 }
 
-/* ---------- FONTS ---------- */
-body, .form, .view, .panel, .grid, input, textarea, select, span, div, td, a{
+/* ============================================================
+   1. FONTS
+   ============================================================ */
+body, .form, .view, .panel, .grid,
+input, textarea, select, span, div, td, a{
   font-family:'Inter',-apple-system,"Segoe UI",Roboto,sans-serif !important;
 }
 .panel-header-text span, .grid-header-text span{
   font-family:'Space Grotesk',sans-serif !important;
 }
 
-/* ---------- PAGE ---------- */
-body, .form{ background-color:var(--bg) !important; }
+/* ============================================================
+   2. PAGE — transparent so the background image shows
+   ============================================================ */
+body, .form{
+  background-color:transparent !important;
+}
 
-/* ---------- CENTER THE VIEWS (keeps your 60%) ---------- */
+/* ============================================================
+   3. CENTER THE VIEWS (respects your 60% width setting)
+   ============================================================ */
 .row{ text-align:center !important; }
 .row > .view{
   display:inline-block !important;
@@ -32,7 +53,9 @@ body, .form{ background-color:var(--bg) !important; }
   vertical-align:top !important;
 }
 
-/* ---------- THE ACTUAL CARD (.panel / .grid, NOT .view) ---------- */
+/* ============================================================
+   4. THE CARD  (.panel / .grid — NOT .view, which is just a wrapper)
+   ============================================================ */
 .view .panel, .view .grid{
   background:var(--white) !important;
   border:1px solid var(--slate-200) !important;
@@ -40,55 +63,74 @@ body, .form{ background-color:var(--bg) !important; }
   box-shadow:var(--shadow-card) !important;
   overflow:hidden !important;
 }
-/* kill K2's added summary borders */
 .gridSummaryNeedLeftBorder, .gridSummaryNeedRightBorder,
 .gridSummaryNeedTopBorder, .gridSummaryNeedBottomBorder{
   border:1px solid var(--slate-200) !important;
 }
 
-/* ---------- CARD HEADER ---------- */
-.panel-header, .grid-header{
-  background:transparent !important;
+/* ============================================================
+   5. CARD HEADER — no grey bar
+   ============================================================ */
+.panel-header, .grid-header,
+.panel-header-l, .panel-header-c, .panel-header-r,
+.panel-header-wrapper, .grid-header-wrapper{
+  background:none !important;
   background-color:transparent !important;
+  background-image:none !important;
+}
+.panel-header, .grid-header{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
-  padding:16px 24px !important;
+  padding:18px 24px !important;
 }
-.panel-header-l,.panel-header-r,.panel-header-c{ background:none !important; border:none !important; }
 .panel-header-text span, .grid-header-text span{
   color:var(--navy-900) !important;
-  font-size:15.5px !important; font-weight:600 !important;
+  font-size:16px !important;
+  font-weight:600 !important;
 }
-/* hide the collapse chevron (not in the mock) */
 a.collapse-vertical{ display:none !important; }
 
-/* ---------- BODY PADDING (override inline 30px) ---------- */
+/* ============================================================
+   6. BODY PADDING — overrides K2's inline 30px
+   ============================================================ */
 .panel-body.STYLE-VIEW-padding, .grid-body.STYLE-VIEW-padding{
-  padding:22px 24px 24px !important;
+  padding:24px !important;
 }
-.panel-body-t,.panel-body-b,.panel-body-t-l,.panel-body-t-c,.panel-body-t-r,
-.panel-body-b-l,.panel-body-b-c,.panel-body-b-r,
-.panel-body-m-l,.panel-body-m-r{
+.panel-body-t, .panel-body-b,
+.panel-body-t-l, .panel-body-t-c, .panel-body-t-r,
+.panel-body-b-l, .panel-body-b-c, .panel-body-b-r,
+.panel-body-m-l, .panel-body-m-r{
   display:none !important;
 }
 
-/* ---------- HEADER FIELD GRID ---------- */
-.root-table.Grid-Layout{ width:100% !important; gap:16px 24px !important; }
+/* ============================================================
+   7. HEADER FIELD GRID
+   ============================================================ */
+.root-table.Grid-Layout{
+  width:100% !important;
+  gap:18px 24px !important;
+}
 .line-break.clearFloatFix{ display:none !important; }
 
 span.SourceCode-Forms-Controls-Web-Label{
-  font-size:12px !important; font-weight:600 !important;
-  color:var(--slate-600) !important; line-height:1.4 !important;
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  color:var(--slate-600) !important;
+  line-height:1.4 !important;
 }
 span.SourceCode-Forms-Controls-Web-DataLabel{
-  font-size:13.5px !important; color:var(--navy-900) !important;
+  font-size:14px !important;
+  color:var(--navy-900) !important;
+  background:transparent !important;
 }
 
-/* ---------- INPUTS: kill the 9-slice border pieces ---------- */
+/* ============================================================
+   8. INPUTS — remove K2's 9-slice border pieces
+   ============================================================ */
 .input-control-t, .input-control-b,
-.input-control-t-l,.input-control-t-c,.input-control-t-r,
-.input-control-b-l,.input-control-b-c,.input-control-b-r,
-.input-control-m-l,.input-control-m-r{
+.input-control-t-l, .input-control-t-c, .input-control-t-r,
+.input-control-b-l, .input-control-b-c, .input-control-b-r,
+.input-control-m-l, .input-control-m-r{
   display:none !important;
 }
 
@@ -106,104 +148,230 @@ input.SourceCode-Forms-Controls-Web-TextBox,
   box-sizing:border-box !important;
 }
 input.SourceCode-Forms-Controls-Web-TextBox{ padding:10px 12px !important; }
+
 .input-control.text-input textarea{
-  border:none !important; background:transparent !important;
-  padding:10px 12px !important; min-height:64px !important;
-  resize:vertical !important; width:100% !important; box-sizing:border-box !important;
+  border:none !important;
+  background:transparent !important;
+  padding:10px 12px !important;
+  min-height:64px !important;
+  resize:vertical !important;
+  width:100% !important;
+  box-sizing:border-box !important;
 }
 .input-control.text-input .input-control-wrapper > input,
 .input-control.select-box .input-control-wrapper > a{
-  border:none !important; background:transparent !important;
+  border:none !important;
+  background:transparent !important;
   padding:10px 12px !important;
 }
-.input-control-watermark{ color:var(--slate-400) !important; padding-left:12px !important; }
-
+.input-control-watermark{
+  color:var(--slate-400) !important;
+  padding-left:12px !important;
+}
 input:focus, textarea:focus{
   border-color:var(--blue-500) !important;
   box-shadow:0 0 0 3px var(--blue-100) !important;
   outline:none !important;
 }
 
-/* read-only */
-.input-control.read-only,
-.ui-lookupbox-disabled,
+/* read-only / post-submit: no grey highlight */
+.SourceCode-Forms-Controls-Web-DataLabel.readonly,
+.SourceCode-Forms-Controls-Web-DataLabel.empty,
 input[readonly], textarea[readonly],
-.SourceCode-Forms-Controls-Web-DataLabel.readonly{
-  background:var(--slate-100) !important;
-  border-color:var(--slate-100) !important;
-  color:var(--slate-600) !important;
+.input-control.read-only,
+.ui-lookupbox-disabled{
+  background:transparent !important;
+  background-color:transparent !important;
+  border-color:var(--slate-200) !important;
+  color:var(--navy-900) !important;
+}
+.input-control.text-input.read-only{
+  background-color:var(--slate-100) !important;
 }
 
-/* ---------- LINE ITEMS GRID ---------- */
+/* ============================================================
+   9. LINE ITEMS GRID
+   ============================================================ */
 .grid-toolbars{ padding:14px 24px 0 !important; border:none !important; }
 a.toolbar-button .button-text{
-  color:var(--blue-600) !important; font-weight:600 !important; font-size:13px !important;
+  color:var(--blue-600) !important;
+  font-weight:600 !important;
+  font-size:13px !important;
 }
+
+/* no horizontal scroll */
+.grid-body-content, .grid-body-content-wrapper, .scroll-wrapper{
+  overflow-x:visible !important;
+  overflow:visible !important;
+}
+.scroll-wrapper > table.grid-content-table,
+table.grid-column-header-table,
+table.grid-edit-templates-table,
+table.grid-display-templates-table,
+table.grid-summary-content-table{
+  width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed !important;
+}
+.scroll-element{ display:none !important; }
+
 .grid-column-headers, .grid-body-content-wrapper{ border:none !important; }
 .grid-column-header-table{
   background:var(--slate-100) !important;
   border-bottom:1px solid var(--slate-200) !important;
 }
 .grid-column-header-text{
-  color:var(--slate-400) !important; font-size:10.5px !important;
-  font-weight:700 !important; text-transform:uppercase !important;
-  letter-spacing:.06em !important; padding:11px 12px !important;
+  color:var(--slate-400) !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
+  padding:11px 12px !important;
 }
 .grid-column-header-divider{ display:none !important; }
+
 .grid-content-cell{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
-  padding:9px 10px !important; vertical-align:middle !important;
+  padding:9px 10px !important;
+  vertical-align:middle !important;
 }
 .zebra-stripes tr:nth-child(even) td{ background:transparent !important; }
-a.action-row{ color:var(--blue-600) !important; font-weight:600 !important; font-size:13px !important; }
-.grid-summary-row td{ border-top:1px solid var(--slate-100) !important; padding-top:14px !important; }
+
+/* edit row — keep inputs inside their cells */
+.grid-content-cell.edit-mode{
+  padding:8px !important;
+  border-bottom:1px solid var(--slate-100) !important;
+}
+.grid-content-cell.edit-mode .grid-content-cell-wrapper{ width:100% !important; }
+.grid-content-cell.edit-mode input,
+.grid-content-cell.edit-mode textarea,
+.grid-content-cell.edit-mode .input-control{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+}
+.grid-content-cell.edit-mode textarea{
+  min-height:36px !important;
+  resize:none !important;
+}
+.grid-content-cell.edit-mode input,
+.grid-content-cell.edit-mode .input-control-wrapper > a{
+  padding:8px 10px !important;
+  font-size:13px !important;
+}
+.grid-content-cell.edit-mode .input-control{
+  border:1px solid var(--slate-200) !important;
+}
+
+a.action-row{
+  color:var(--blue-600) !important;
+  font-weight:600 !important;
+  font-size:13px !important;
+}
+
+/* summary / totals */
+.grid-summary-row td{
+  border-top:1px solid var(--slate-100) !important;
+  padding-top:14px !important;
+}
 span[name="Sum Label"]{
-  font-size:11px !important; color:var(--slate-400) !important;
-  text-transform:uppercase !important; letter-spacing:.06em !important;
+  font-size:11px !important;
+  color:var(--slate-400) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
 }
 span[name="Sum USD Amount"]{
   font-family:'IBM Plex Mono',monospace !important;
-  font-size:20px !important; color:var(--navy-900) !important;
+  font-size:20px !important;
+  color:var(--navy-900) !important;
 }
-span[name="Amount Data Label"], span[name="USD Amount Data Label"],
+span[name="Amount Data Label"],
+span[name="USD Amount Data Label"],
 span[name="Total Amount Data Label"]{
-  font-family:'IBM Plex Mono',monospace !important; color:var(--navy-800) !important;
-}
-.file-wrapper .file-watermark{
-  color:var(--blue-600) !important; background:var(--blue-50) !important;
-  border:1px dashed var(--blue-500) !important; border-radius:999px !important;
-  padding:6px 10px !important; font-size:11.5px !important; display:inline-block !important;
+  font-family:'IBM Plex Mono',monospace !important;
+  color:var(--navy-800) !important;
 }
 
-/* ---------- BUTTONS ---------- */
+/* receipt cell */
+.grid-content-cell .file-wrapper,
+.grid-content-cell .file-table{
+  width:100% !important;
+  max-width:100% !important;
+}
+.grid-content-cell .file-table,
+.grid-content-cell .file-label{ height:auto !important; }
+.grid-content-cell .file-tn-cell{ display:none !important; }
+.file-wrapper .file-watermark{
+  color:var(--blue-600) !important;
+  background:var(--blue-50) !important;
+  border:1px dashed var(--blue-500) !important;
+  border-radius:999px !important;
+  padding:6px 10px !important;
+  font-size:11.5px !important;
+  display:inline-block !important;
+}
+
+/* ============================================================
+   10. BUTTONS
+   ============================================================ */
 a.SourceCode-Forms-Controls-Web-Button{
-  border:none !important; border-radius:8px !important;
-  padding:11px 22px !important; font-size:13.5px !important;
-  font-weight:600 !important; text-decoration:none !important;
-  display:inline-block !important; color:#FFFFFF !important;
+  border:none !important;
+  border-radius:8px !important;
+  padding:11px 22px !important;
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  text-decoration:none !important;
+  display:inline-block !important;
+  color:#FFFFFF !important;
 }
 a.SourceCode-Forms-Controls-Web-Button span{ color:#FFFFFF !important; }
 
-a[name="Button Submit"], a[name="Button Finance Processing"]{
+a[name="Button Submit"],
+a[name="Button Finance Processing"]{
   background-color:var(--blue-600) !important;
   box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
 }
-a[name="Button Submit"]:hover, a[name="Button Finance Processing"]:hover{
+a[name="Button Submit"]:hover,
+a[name="Button Finance Processing"]:hover{
   background-color:var(--navy-900) !important;
 }
+
 a[name="Approve Button"]{ background-color:var(--success) !important; }
 a[name="Approve Button"]:hover{ background-color:#177A52 !important; }
-a[name="Reject Button"], a[name="Button Cancel"], a[name="Cancel Claim Button"]{
-  background-color:var(--danger) !important;
-}
-a[name="Reject Button"]:hover, a[name="Button Cancel"]:hover, a[name="Cancel Claim Button"]:hover{
-  background-color:#B03A3A !important;
-}
-a[name="Rework Button"], a[name="Resubmit Claim Button"]{ background-color:var(--amber) !important; }
-a[name="Rework Button"]:hover, a[name="Resubmit Claim Button"]:hover{ background-color:#96610F !important; }
 
-/* ---------- IMAGES / REFERENCE ---------- */
-img.picture-control-inline{ border-radius:12px !important; display:block !important; margin:0 auto !important; }
-span[name="Reference Label"]{ display:block !important; text-align:right !important; font-size:12px !important; color:var(--slate-400) !important; }
-span[name="Reference Number"]{ display:block !important; text-align:right !important; font-family:'IBM Plex Mono',monospace !important; font-size:14px !important; font-weight:600 !important; color:var(--navy-800) !important; }
+a[name="Reject Button"],
+a[name="Button Cancel"],
+a[name="Cancel Claim Button"]{ background-color:var(--danger) !important; }
+a[name="Reject Button"]:hover,
+a[name="Button Cancel"]:hover,
+a[name="Cancel Claim Button"]:hover{ background-color:#B03A3A !important; }
+
+a[name="Rework Button"],
+a[name="Resubmit Claim Button"]{ background-color:var(--amber) !important; }
+a[name="Rework Button"]:hover,
+a[name="Resubmit Claim Button"]:hover{ background-color:#96610F !important; }
+
+/* ============================================================
+   11. IMAGES + REFERENCE NUMBER
+   ============================================================ */
+img.picture-control-inline{
+  border-radius:12px !important;
+  display:block !important;
+  margin:0 auto !important;
+}
+span[name="Reference Label"]{
+  display:block !important;
+  text-align:right !important;
+  font-size:12px !important;
+  color:var(--slate-400) !important;
+}
+span[name="Reference Number"]{
+  display:block !important;
+  text-align:right !important;
+  font-family:'IBM Plex Mono',monospace !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  color:var(--navy-800) !important;
+}
