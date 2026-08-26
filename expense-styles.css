@@ -45,7 +45,7 @@
    ============================================================ */
 body{
   background-color:var(--slate-100) !important;
-  background-image:url('YOUR_BG_URL_HERE') !important;
+  background-image:url('Expense%20Claim%20Bg.jpg') !important;
   background-size:cover !important;
   background-position:center center !important;
   background-attachment:fixed !important;
@@ -56,7 +56,6 @@ body{
   background-color:transparent !important;
   background-image:none !important;
 }
-
 /* ============================================================
    3. CENTER THE VIEWS (respects your 60% width setting)
    ============================================================ */
