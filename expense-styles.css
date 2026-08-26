@@ -41,7 +41,9 @@
 }
 
 /* ============================================================
-   2. PAGE — transparent so the background image shows
+   2. PAGE BACKGROUND
+   NOTE: clear the "Background Image" field in Form Properties,
+   otherwise K2's inline style fights this.
    ============================================================ */
 body{
   background-color:var(--slate-100) !important;
@@ -56,10 +58,29 @@ body{
   background-color:transparent !important;
   background-image:none !important;
 }
+
 /* ============================================================
-   3. CENTER THE VIEWS (respects your 60% width setting)
+   3. ROW SPACING — collapse hidden rows so they take no height
    ============================================================ */
-.form .row{ text-align:center !important; }
+.form .row:has(> .formcontrol [style*="visibility: hidden"]),
+.form .row:has(> .formcontrol [style*="visibility:hidden"]),
+.form .row[style*="display: none"],
+.form .row[style*="display:none"]{
+  display:none !important;
+}
+.form .row{
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+}
+.form .formcontrol{
+  margin-top:0 !important;
+  margin-bottom:12px !important;
+}
+
+/* ============================================================
+   4. CENTER THE VIEWS (respects the 75% width setting)
+   ============================================================ */
 .form .row > .view{
   display:inline-block !important;
   float:none !important;
@@ -69,7 +90,7 @@ body{
 }
 
 /* ============================================================
-   4. THE CARD  (.panel / .grid — .view is only a width wrapper)
+   5. THE CARD  (.panel / .grid — .view is only a width wrapper)
    ============================================================ */
 .form .view .panel,
 .form .view .grid{
@@ -87,7 +108,7 @@ body{
 }
 
 /* ============================================================
-   5. CARD HEADER — no grey bar
+   6. CARD HEADER — no grey bar
    ============================================================ */
 .form .panel-header, .form .grid-header,
 .form .panel-header-l, .form .panel-header-c, .form .panel-header-r,
@@ -110,7 +131,7 @@ body{
 .form a.collapse-vertical{ display:none !important; }
 
 /* ============================================================
-   6. BODY PADDING — overrides K2's inline 30px
+   7. BODY PADDING — overrides K2's inline 30px
    ============================================================ */
 .form .panel-body.STYLE-VIEW-padding,
 .form .grid-body.STYLE-VIEW-padding{
@@ -124,7 +145,7 @@ body{
 }
 
 /* ============================================================
-   7. HEADER FIELD GRID
+   8. HEADER FIELD GRID
    ============================================================ */
 .form .root-table.Grid-Layout{
   width:100% !important;
@@ -145,7 +166,7 @@ body{
 }
 
 /* ============================================================
-   8. INPUTS — remove K2's 9-slice border pieces
+   9. INPUTS — remove K2's 9-slice border pieces
    ============================================================ */
 .form .input-control-t, .form .input-control-b,
 .form .input-control-t-l, .form .input-control-t-c, .form .input-control-t-r,
@@ -212,7 +233,7 @@ body{
 }
 
 /* ============================================================
-   9. LINE ITEMS GRID
+   10. LINE ITEMS GRID
    ============================================================ */
 .form .grid-toolbars{
   padding:14px 24px 0 !important;
@@ -224,7 +245,7 @@ body{
   font-size:13px !important;
 }
 
-/* horizontal scroll only — never touch overflow-y (breaks scrolling) */
+/* horizontal only — never touch overflow-y (breaks page scrolling) */
 .form .grid-body-content,
 .form .grid-body-content-wrapper,
 .form .scroll-wrapper{
@@ -237,6 +258,7 @@ body{
 .form table.grid-display-templates-table,
 .form table.grid-summary-content-table{
   width:100% !important;
+  max-width:100% !important;
   min-width:0 !important;
   table-layout:fixed !important;
 }
@@ -262,8 +284,14 @@ body{
   border-bottom:1px solid var(--slate-100) !important;
   padding:9px 10px !important;
   vertical-align:middle !important;
+  overflow:hidden !important;
+  max-width:0 !important;
 }
 .form .zebra-stripes tr:nth-child(even) td{
+  background:transparent !important;
+}
+.form tr.edit-template-row td,
+.form .grid-content-table tr.selected td{
   background:transparent !important;
 }
 
@@ -271,6 +299,7 @@ body{
 .form .grid-content-cell.edit-mode{
   padding:8px !important;
   border-bottom:1px solid var(--slate-100) !important;
+  overflow:hidden !important;
 }
 .form .grid-content-cell.edit-mode .grid-content-cell-wrapper{
   width:100% !important;
@@ -284,8 +313,12 @@ body{
   box-sizing:border-box !important;
 }
 .form .grid-content-cell.edit-mode textarea{
-  min-height:36px !important;
+  min-height:34px !important;
+  height:34px !important;
+  max-height:34px !important;
   resize:none !important;
+  overflow:hidden !important;
+  padding:8px 10px !important;
 }
 .form .grid-content-cell.edit-mode input,
 .form .grid-content-cell.edit-mode .input-control-wrapper > a{
@@ -330,6 +363,7 @@ body{
 .form .grid-content-cell .file-table{
   width:100% !important;
   max-width:100% !important;
+  overflow:hidden !important;
 }
 .form .grid-content-cell .file-table,
 .form .grid-content-cell .file-label{ height:auto !important; }
@@ -339,13 +373,17 @@ body{
   background:var(--blue-50) !important;
   border:1px dashed var(--blue-500) !important;
   border-radius:999px !important;
-  padding:6px 10px !important;
-  font-size:11.5px !important;
+  padding:5px 8px !important;
+  font-size:10.5px !important;
   display:inline-block !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  max-width:100% !important;
 }
 
 /* ============================================================
-   10. BUTTONS
+   11. BUTTONS
    ============================================================ */
 .form a.SourceCode-Forms-Controls-Web-Button{
   border:none !important;
@@ -399,19 +437,17 @@ body{
 }
 
 /* ============================================================
-   11. IMAGES + TOP BAR (logo + reference)
+   12. TOP BAR (logo + reference) + BANNER IMAGES
    ============================================================ */
-
-/* banner images inside their centering tables */
 .form img.picture-control-inline{
   border-radius:12px !important;
   display:block !important;
   margin:0 auto !important;
 }
 
-/* top bar table — match the 60% card width */
+/* top bar table — match the 75% card width */
 .form div[name="Table"][id*="4aa19b56"]{
-  width:60% !important;
+  width:75% !important;
   margin:0 auto !important;
   gap:0 !important;
 }
@@ -422,9 +458,9 @@ body{
   max-height:52px !important;
   margin:0 !important;
   display:block !important;
+  border-radius:0 !important;
 }
 
-/* reference label */
 .form span[name="Reference"]{
   display:block !important;
   text-align:right !important;
@@ -432,8 +468,6 @@ body{
   color:var(--slate-400) !important;
   line-height:1.2 !important;
 }
-
-/* reference value */
 .form span[name="Refernce ID"]{
   display:block !important;
   text-align:right !important;
