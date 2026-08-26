@@ -399,24 +399,48 @@ body{
 }
 
 /* ============================================================
-   11. IMAGES + REFERENCE NUMBER
+   11. IMAGES + TOP BAR (logo + reference)
    ============================================================ */
+
+/* banner images inside their centering tables */
 .form img.picture-control-inline{
   border-radius:12px !important;
   display:block !important;
   margin:0 auto !important;
 }
-.form span[name="Reference Label"]{
+
+/* top bar table — match the 60% card width */
+.form div[name="Table"][id*="4aa19b56"]{
+  width:60% !important;
+  margin:0 auto !important;
+  gap:0 !important;
+}
+
+/* logo — override the inline width:20% */
+.form img[name="Nav Logo"]{
+  width:auto !important;
+  max-height:52px !important;
+  margin:0 !important;
+  display:block !important;
+}
+
+/* reference label */
+.form span[name="Reference"]{
   display:block !important;
   text-align:right !important;
   font-size:12px !important;
   color:var(--slate-400) !important;
+  line-height:1.2 !important;
 }
-.form span[name="Reference Number"]{
+
+/* reference value */
+.form span[name="Refernce ID"]{
   display:block !important;
   text-align:right !important;
   font-family:'IBM Plex Mono',monospace !important;
   font-size:14px !important;
   font-weight:600 !important;
   color:var(--navy-800) !important;
+  line-height:1.3 !important;
+  margin-top:2px !important;
 }
