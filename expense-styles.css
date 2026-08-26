@@ -1,6 +1,9 @@
 /* ============================================================
    ICT MISR — Expense Claim Form
    Nintex Automation (K2) custom style profile
+
+   SCOPING RULE: every selector is prefixed with `.form` so it
+   cannot leak into the K2 Designer UI. Do not add bare selectors.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
@@ -26,26 +29,39 @@
 /* ============================================================
    1. FONTS
    ============================================================ */
-body, .form, .view, .panel, .grid,
-input, textarea, select, span, div, td, a{
+.form,
+.form .view, .form .panel, .form .grid,
+.form input, .form textarea, .form select,
+.form span, .form div, .form td, .form a{
   font-family:'Inter',-apple-system,"Segoe UI",Roboto,sans-serif !important;
 }
-.panel-header-text span, .grid-header-text span{
+.form .panel-header-text span,
+.form .grid-header-text span{
   font-family:'Space Grotesk',sans-serif !important;
 }
 
 /* ============================================================
    2. PAGE — transparent so the background image shows
    ============================================================ */
-body, .form{
+body{
+  background-color:var(--slate-100) !important;
+  background-image:url('YOUR_BG_URL_HERE') !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-attachment:fixed !important;
+  background-repeat:no-repeat !important;
+  min-height:100vh !important;
+}
+.form{
   background-color:transparent !important;
+  background-image:none !important;
 }
 
 /* ============================================================
    3. CENTER THE VIEWS (respects your 60% width setting)
    ============================================================ */
-.row{ text-align:center !important; }
-.row > .view{
+.form .row{ text-align:center !important; }
+.form .row > .view{
   display:inline-block !important;
   float:none !important;
   text-align:left !important;
@@ -54,71 +70,76 @@ body, .form{
 }
 
 /* ============================================================
-   4. THE CARD  (.panel / .grid — NOT .view, which is just a wrapper)
+   4. THE CARD  (.panel / .grid — .view is only a width wrapper)
    ============================================================ */
-.view .panel, .view .grid{
+.form .view .panel,
+.form .view .grid{
   background:var(--white) !important;
   border:1px solid var(--slate-200) !important;
   border-radius:12px !important;
   box-shadow:var(--shadow-card) !important;
   overflow:hidden !important;
 }
-.gridSummaryNeedLeftBorder, .gridSummaryNeedRightBorder,
-.gridSummaryNeedTopBorder, .gridSummaryNeedBottomBorder{
+.form .gridSummaryNeedLeftBorder,
+.form .gridSummaryNeedRightBorder,
+.form .gridSummaryNeedTopBorder,
+.form .gridSummaryNeedBottomBorder{
   border:1px solid var(--slate-200) !important;
 }
 
 /* ============================================================
    5. CARD HEADER — no grey bar
    ============================================================ */
-.panel-header, .grid-header,
-.panel-header-l, .panel-header-c, .panel-header-r,
-.panel-header-wrapper, .grid-header-wrapper{
+.form .panel-header, .form .grid-header,
+.form .panel-header-l, .form .panel-header-c, .form .panel-header-r,
+.form .panel-header-wrapper, .form .grid-header-wrapper{
   background:none !important;
   background-color:transparent !important;
   background-image:none !important;
 }
-.panel-header, .grid-header{
+.form .panel-header, .form .grid-header{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
   padding:18px 24px !important;
 }
-.panel-header-text span, .grid-header-text span{
+.form .panel-header-text span,
+.form .grid-header-text span{
   color:var(--navy-900) !important;
   font-size:16px !important;
   font-weight:600 !important;
 }
-a.collapse-vertical{ display:none !important; }
+.form a.collapse-vertical{ display:none !important; }
 
 /* ============================================================
    6. BODY PADDING — overrides K2's inline 30px
    ============================================================ */
-.panel-body.STYLE-VIEW-padding, .grid-body.STYLE-VIEW-padding{
+.form .panel-body.STYLE-VIEW-padding,
+.form .grid-body.STYLE-VIEW-padding{
   padding:24px !important;
 }
-.panel-body-t, .panel-body-b,
-.panel-body-t-l, .panel-body-t-c, .panel-body-t-r,
-.panel-body-b-l, .panel-body-b-c, .panel-body-b-r,
-.panel-body-m-l, .panel-body-m-r{
+.form .panel-body-t, .form .panel-body-b,
+.form .panel-body-t-l, .form .panel-body-t-c, .form .panel-body-t-r,
+.form .panel-body-b-l, .form .panel-body-b-c, .form .panel-body-b-r,
+.form .panel-body-m-l, .form .panel-body-m-r{
   display:none !important;
 }
 
 /* ============================================================
    7. HEADER FIELD GRID
    ============================================================ */
-.root-table.Grid-Layout{
+.form .root-table.Grid-Layout{
   width:100% !important;
   gap:18px 24px !important;
 }
-.line-break.clearFloatFix{ display:none !important; }
+.form .line-break.clearFloatFix{ display:none !important; }
 
-span.SourceCode-Forms-Controls-Web-Label{
+.form span.SourceCode-Forms-Controls-Web-Label{
   font-size:13.5px !important;
   font-weight:600 !important;
   color:var(--slate-600) !important;
   line-height:1.4 !important;
 }
-span.SourceCode-Forms-Controls-Web-DataLabel{
+.form span.SourceCode-Forms-Controls-Web-DataLabel{
   font-size:14px !important;
   color:var(--navy-900) !important;
   background:transparent !important;
@@ -127,18 +148,18 @@ span.SourceCode-Forms-Controls-Web-DataLabel{
 /* ============================================================
    8. INPUTS — remove K2's 9-slice border pieces
    ============================================================ */
-.input-control-t, .input-control-b,
-.input-control-t-l, .input-control-t-c, .input-control-t-r,
-.input-control-b-l, .input-control-b-c, .input-control-b-r,
-.input-control-m-l, .input-control-m-r{
+.form .input-control-t, .form .input-control-b,
+.form .input-control-t-l, .form .input-control-t-c, .form .input-control-t-r,
+.form .input-control-b-l, .form .input-control-b-c, .form .input-control-b-r,
+.form .input-control-m-l, .form .input-control-m-r{
   display:none !important;
 }
 
-input.SourceCode-Forms-Controls-Web-TextBox,
-.input-control.text-input,
-.input-control.select-box,
-.input-control.dropdown-box,
-.input-control.calendar-control{
+.form input.SourceCode-Forms-Controls-Web-TextBox,
+.form .input-control.text-input,
+.form .input-control.select-box,
+.form .input-control.dropdown-box,
+.form .input-control.calendar-control{
   border:1px solid var(--slate-200) !important;
   border-radius:8px !important;
   background:var(--white) !important;
@@ -147,9 +168,11 @@ input.SourceCode-Forms-Controls-Web-TextBox,
   font-size:13.5px !important;
   box-sizing:border-box !important;
 }
-input.SourceCode-Forms-Controls-Web-TextBox{ padding:10px 12px !important; }
+.form input.SourceCode-Forms-Controls-Web-TextBox{
+  padding:10px 12px !important;
+}
 
-.input-control.text-input textarea{
+.form .input-control.text-input textarea{
   border:none !important;
   background:transparent !important;
   padding:10px 12px !important;
@@ -158,69 +181,74 @@ input.SourceCode-Forms-Controls-Web-TextBox{ padding:10px 12px !important; }
   width:100% !important;
   box-sizing:border-box !important;
 }
-.input-control.text-input .input-control-wrapper > input,
-.input-control.select-box .input-control-wrapper > a{
+.form .input-control.text-input .input-control-wrapper > input,
+.form .input-control.select-box .input-control-wrapper > a{
   border:none !important;
   background:transparent !important;
   padding:10px 12px !important;
 }
-.input-control-watermark{
+.form .input-control-watermark{
   color:var(--slate-400) !important;
   padding-left:12px !important;
 }
-input:focus, textarea:focus{
+.form input:focus, .form textarea:focus{
   border-color:var(--blue-500) !important;
   box-shadow:0 0 0 3px var(--blue-100) !important;
   outline:none !important;
 }
 
 /* read-only / post-submit: no grey highlight */
-.SourceCode-Forms-Controls-Web-DataLabel.readonly,
-.SourceCode-Forms-Controls-Web-DataLabel.empty,
-input[readonly], textarea[readonly],
-.input-control.read-only,
-.ui-lookupbox-disabled{
+.form .SourceCode-Forms-Controls-Web-DataLabel.readonly,
+.form .SourceCode-Forms-Controls-Web-DataLabel.empty,
+.form input[readonly], .form textarea[readonly],
+.form .input-control.read-only,
+.form .ui-lookupbox-disabled{
   background:transparent !important;
   background-color:transparent !important;
   border-color:var(--slate-200) !important;
   color:var(--navy-900) !important;
 }
-.input-control.text-input.read-only{
+.form .input-control.text-input.read-only{
   background-color:var(--slate-100) !important;
 }
 
 /* ============================================================
    9. LINE ITEMS GRID
    ============================================================ */
-.grid-toolbars{ padding:14px 24px 0 !important; border:none !important; }
-a.toolbar-button .button-text{
+.form .grid-toolbars{
+  padding:14px 24px 0 !important;
+  border:none !important;
+}
+.form a.toolbar-button .button-text{
   color:var(--blue-600) !important;
   font-weight:600 !important;
   font-size:13px !important;
 }
 
-/* no horizontal scroll */
-.grid-body-content, .grid-body-content-wrapper, .scroll-wrapper{
+/* horizontal scroll only — never touch overflow-y (breaks scrolling) */
+.form .grid-body-content,
+.form .grid-body-content-wrapper,
+.form .scroll-wrapper{
   overflow-x:hidden !important;
   overflow-y:visible !important;
 }
-.scroll-wrapper > table.grid-content-table,
-table.grid-column-header-table,
-table.grid-edit-templates-table,
-table.grid-display-templates-table,
-table.grid-summary-content-table{
+.form .scroll-wrapper > table.grid-content-table,
+.form table.grid-column-header-table,
+.form table.grid-edit-templates-table,
+.form table.grid-display-templates-table,
+.form table.grid-summary-content-table{
   width:100% !important;
   min-width:0 !important;
   table-layout:fixed !important;
 }
-.scroll-element{ display:none !important; }
 
-.grid-column-headers, .grid-body-content-wrapper{ border:none !important; }
-.grid-column-header-table{
+.form .grid-column-headers,
+.form .grid-body-content-wrapper{ border:none !important; }
+.form .grid-column-header-table{
   background:var(--slate-100) !important;
   border-bottom:1px solid var(--slate-200) !important;
 }
-.grid-column-header-text{
+.form .grid-column-header-text{
   color:var(--slate-400) !important;
   font-size:10.5px !important;
   font-weight:700 !important;
@@ -228,82 +256,86 @@ table.grid-summary-content-table{
   letter-spacing:.06em !important;
   padding:11px 12px !important;
 }
-.grid-column-header-divider{ display:none !important; }
+.form .grid-column-header-divider{ display:none !important; }
 
-.grid-content-cell{
+.form .grid-content-cell{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
   padding:9px 10px !important;
   vertical-align:middle !important;
 }
-.zebra-stripes tr:nth-child(even) td{ background:transparent !important; }
+.form .zebra-stripes tr:nth-child(even) td{
+  background:transparent !important;
+}
 
 /* edit row — keep inputs inside their cells */
-.grid-content-cell.edit-mode{
+.form .grid-content-cell.edit-mode{
   padding:8px !important;
   border-bottom:1px solid var(--slate-100) !important;
 }
-.grid-content-cell.edit-mode .grid-content-cell-wrapper{ width:100% !important; }
-.grid-content-cell.edit-mode input,
-.grid-content-cell.edit-mode textarea,
-.grid-content-cell.edit-mode .input-control{
+.form .grid-content-cell.edit-mode .grid-content-cell-wrapper{
+  width:100% !important;
+}
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode textarea,
+.form .grid-content-cell.edit-mode .input-control{
   width:100% !important;
   max-width:100% !important;
   min-width:0 !important;
   box-sizing:border-box !important;
 }
-.grid-content-cell.edit-mode textarea{
+.form .grid-content-cell.edit-mode textarea{
   min-height:36px !important;
   resize:none !important;
 }
-.grid-content-cell.edit-mode input,
-.grid-content-cell.edit-mode .input-control-wrapper > a{
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode .input-control-wrapper > a{
   padding:8px 10px !important;
   font-size:13px !important;
 }
-.grid-content-cell.edit-mode .input-control{
+.form .grid-content-cell.edit-mode .input-control{
   border:1px solid var(--slate-200) !important;
 }
 
-a.action-row{
+.form a.action-row{
   color:var(--blue-600) !important;
   font-weight:600 !important;
   font-size:13px !important;
 }
 
 /* summary / totals */
-.grid-summary-row td{
+.form .grid-summary-row td{
   border-top:1px solid var(--slate-100) !important;
   padding-top:14px !important;
 }
-span[name="Sum Label"]{
+.form span[name="Sum Label"]{
   font-size:11px !important;
   color:var(--slate-400) !important;
   text-transform:uppercase !important;
   letter-spacing:.06em !important;
 }
-span[name="Sum USD Amount"]{
+.form span[name="Sum USD Amount"]{
   font-family:'IBM Plex Mono',monospace !important;
   font-size:20px !important;
   color:var(--navy-900) !important;
 }
-span[name="Amount Data Label"],
-span[name="USD Amount Data Label"],
-span[name="Total Amount Data Label"]{
+.form span[name="Amount Data Label"],
+.form span[name="USD Amount Data Label"],
+.form span[name="Total Amount Data Label"]{
   font-family:'IBM Plex Mono',monospace !important;
   color:var(--navy-800) !important;
 }
 
 /* receipt cell */
-.grid-content-cell .file-wrapper,
-.grid-content-cell .file-table{
+.form .grid-content-cell .file-wrapper,
+.form .grid-content-cell .file-table{
   width:100% !important;
   max-width:100% !important;
 }
-.grid-content-cell .file-table,
-.grid-content-cell .file-label{ height:auto !important; }
-.grid-content-cell .file-tn-cell{ display:none !important; }
-.file-wrapper .file-watermark{
+.form .grid-content-cell .file-table,
+.form .grid-content-cell .file-label{ height:auto !important; }
+.form .grid-content-cell .file-tn-cell{ display:none !important; }
+.form .file-wrapper .file-watermark{
   color:var(--blue-600) !important;
   background:var(--blue-50) !important;
   border:1px dashed var(--blue-500) !important;
@@ -316,7 +348,7 @@ span[name="Total Amount Data Label"]{
 /* ============================================================
    10. BUTTONS
    ============================================================ */
-a.SourceCode-Forms-Controls-Web-Button{
+.form a.SourceCode-Forms-Controls-Web-Button{
   border:none !important;
   border-radius:8px !important;
   padding:11px 22px !important;
@@ -326,48 +358,62 @@ a.SourceCode-Forms-Controls-Web-Button{
   display:inline-block !important;
   color:#FFFFFF !important;
 }
-a.SourceCode-Forms-Controls-Web-Button span{ color:#FFFFFF !important; }
+.form a.SourceCode-Forms-Controls-Web-Button span{
+  color:#FFFFFF !important;
+}
 
-a[name="Button Submit"],
-a[name="Button Finance Processing"]{
+.form a[name="Button Submit"],
+.form a[name="Button Finance Processing"]{
   background-color:var(--blue-600) !important;
   box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
 }
-a[name="Button Submit"]:hover,
-a[name="Button Finance Processing"]:hover{
+.form a[name="Button Submit"]:hover,
+.form a[name="Button Finance Processing"]:hover{
   background-color:var(--navy-900) !important;
 }
 
-a[name="Approve Button"]{ background-color:var(--success) !important; }
-a[name="Approve Button"]:hover{ background-color:#177A52 !important; }
+.form a[name="Approve Button"]{
+  background-color:var(--success) !important;
+}
+.form a[name="Approve Button"]:hover{
+  background-color:#177A52 !important;
+}
 
-a[name="Reject Button"],
-a[name="Button Cancel"],
-a[name="Cancel Claim Button"]{ background-color:var(--danger) !important; }
-a[name="Reject Button"]:hover,
-a[name="Button Cancel"]:hover,
-a[name="Cancel Claim Button"]:hover{ background-color:#B03A3A !important; }
+.form a[name="Reject Button"],
+.form a[name="Button Cancel"],
+.form a[name="Cancel Claim Button"]{
+  background-color:var(--danger) !important;
+}
+.form a[name="Reject Button"]:hover,
+.form a[name="Button Cancel"]:hover,
+.form a[name="Cancel Claim Button"]:hover{
+  background-color:#B03A3A !important;
+}
 
-a[name="Rework Button"],
-a[name="Resubmit Claim Button"]{ background-color:var(--amber) !important; }
-a[name="Rework Button"]:hover,
-a[name="Resubmit Claim Button"]:hover{ background-color:#96610F !important; }
+.form a[name="Rework Button"],
+.form a[name="Resubmit Claim Button"]{
+  background-color:var(--amber) !important;
+}
+.form a[name="Rework Button"]:hover,
+.form a[name="Resubmit Claim Button"]:hover{
+  background-color:#96610F !important;
+}
 
 /* ============================================================
    11. IMAGES + REFERENCE NUMBER
    ============================================================ */
-img.picture-control-inline{
+.form img.picture-control-inline{
   border-radius:12px !important;
   display:block !important;
   margin:0 auto !important;
 }
-span[name="Reference Label"]{
+.form span[name="Reference Label"]{
   display:block !important;
   text-align:right !important;
   font-size:12px !important;
   color:var(--slate-400) !important;
 }
-span[name="Reference Number"]{
+.form span[name="Reference Number"]{
   display:block !important;
   text-align:right !important;
   font-family:'IBM Plex Mono',monospace !important;
