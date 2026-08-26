@@ -60,26 +60,11 @@ body{
 }
 
 /* ============================================================
-   3. COLLAPSE HIDDEN ROWS
-   Direct-child chains only — a row is collapsed only when its
-   own content is hidden, never because some nested descendant
-   happens to carry display:none. Reacts to what K2 already did;
-   the state rules are untouched.
+   3. ROW SPACING
+   No collapse rules here — hiding empty banner rows is handled
+   in the Designer (uncheck Visible on each banner wrapper table,
+   then Show a Form control in the one state that needs it).
    ============================================================ */
-.form .row[style*="display: none"],
-.form .row[style*="display:none"],
-.form .row:has(> .view[style*="display: none"]),
-.form .row:has(> .view[style*="display:none"]),
-.form .row:has(> .formcontrol > .innerpanel > .Grid-Layout[style*="display: none"]),
-.form .row:has(> .formcontrol > .innerpanel > .Grid-Layout[style*="display:none"]){
-  display:none !important;
-  height:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-  overflow:hidden !important;
-}
-
-/* tighten what remains */
 .form .row{
   margin:0 !important;
   padding:0 !important;
@@ -457,10 +442,8 @@ body{
 /* ============================================================
    12. TOP BAR (logo + reference) + BANNER IMAGES
    ============================================================ */
-/* only style visible pictures — never override K2's display:none */
-.form img.picture-control-inline:not([style*="display:none"]):not([style*="display: none"]){
+.form img.picture-control-inline{
   border-radius:12px !important;
-  display:block !important;
   margin:0 auto !important;
 }
 
