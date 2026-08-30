@@ -42,8 +42,6 @@
 
 /* ============================================================
    2. PAGE BACKGROUND
-   NOTE: clear the "Background Image" field in Form Properties,
-   otherwise K2's inline style fights this.
    ============================================================ */
 body{
   background-color:var(--slate-100) !important;
@@ -90,7 +88,7 @@ body{
 }
 
 /* ============================================================
-   5. THE CARD  (.panel / .grid — .view is only a width wrapper)
+   5. THE CARD (.panel / .grid — .view is only a width wrapper)
    ============================================================ */
 .form .view .panel,
 .form .view .grid{
@@ -245,7 +243,6 @@ body{
   font-size:13px !important;
 }
 
-/* horizontal only — never touch overflow-y (breaks page scrolling) */
 .form .grid-body-content,
 .form .grid-body-content-wrapper,
 .form .scroll-wrapper{
@@ -382,7 +379,41 @@ body{
 }
 
 /* ============================================================
-   11. BUTTONS
+   11. POLICY DOCUMENT BAR (Table13 / Table3)
+   ============================================================ */
+.form div[name="Table13"],
+.form div[name="Table3"]{
+  width:75% !important;
+  margin:0 auto 16px auto !important;
+  box-sizing:border-box !important;
+}
+
+.form div[name="Table3"]{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+  width:100% !important;
+}
+
+.form span[name="Cell26"]{
+  flex:1 1 auto !important;
+  max-width:280px !important;
+  display:inline-block !important;
+}
+
+.form span[name="Cell27"]{
+  flex:0 0 auto !important;
+  display:inline-block !important;
+}
+
+.form input[name="Policy Number Text Box"]{
+  width:100% !important;
+  max-width:280px !important;
+}
+
+/* ============================================================
+   12. BUTTONS
    ============================================================ */
 .form a.SourceCode-Forms-Controls-Web-Button{
   border:none !important;
@@ -399,12 +430,14 @@ body{
 }
 
 .form a[name="Button Submit"],
-.form a[name="Button Finance Processing"]{
+.form a[name="Button Finance Processing"],
+.form a[name="Download Policy Button"]{
   background-color:var(--blue-600) !important;
   box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
 }
 .form a[name="Button Submit"]:hover,
-.form a[name="Button Finance Processing"]:hover{
+.form a[name="Button Finance Processing"]:hover,
+.form a[name="Download Policy Button"]:hover{
   background-color:var(--navy-900) !important;
 }
 
@@ -436,7 +469,7 @@ body{
 }
 
 /* ============================================================
-   12. TOP BAR (logo + reference) + BANNER IMAGES
+   13. TOP BAR (logo + reference) + BANNER IMAGES
    ============================================================ */
 .form img.picture-control-inline{
   border-radius:12px !important;
