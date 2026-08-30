@@ -382,34 +382,48 @@ body{
    11. POLICY DOCUMENT BAR (Table13 / Table3)
    ============================================================ */
 .form div[name="Table13"],
-.form div[name="Table3"]{
+.form div[id*="37c41964-0b2e-3190-e4fa-c0c326c4ed1c_Table"]{
   width:75% !important;
   margin:0 auto 16px auto !important;
   box-sizing:border-box !important;
 }
 
-.form div[name="Table3"]{
+.form div[name="Table3"],
+.form div[id*="574efea7-9524-7e7b-526b-23b3c3658f18_Table"]{
   display:flex !important;
+  flex-direction:row !important;
   align-items:center !important;
   justify-content:flex-start !important;
   gap:12px !important;
   width:100% !important;
+  grid-template-columns:none !important;
+}
+
+.form span[name="Cell25"]{
+  width:100% !important;
+  display:block !important;
+  padding:0 !important;
 }
 
 .form span[name="Cell26"]{
-  flex:1 1 auto !important;
-  max-width:280px !important;
+  flex:0 0 260px !important;
+  width:260px !important;
+  max-width:260px !important;
   display:inline-block !important;
+  padding:0 !important;
 }
 
 .form span[name="Cell27"]{
   flex:0 0 auto !important;
   display:inline-block !important;
+  text-align:left !important;
+  padding:0 !important;
 }
 
 .form input[name="Policy Number Text Box"]{
   width:100% !important;
-  max-width:280px !important;
+  max-width:260px !important;
+  box-sizing:border-box !important;
 }
 
 /* ============================================================
